@@ -6,7 +6,8 @@ const {
   framework_handleLogin,
   framework_showCode,
   v1_tokenForCode,
-  v1_identity
+  v1_identity,
+  v1_revoke
 } = require('src/api')
 
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
     '/api/users.identity': v1_identity
   },
   post: {
-    '/login': framework_handleLogin
+    '/login': framework_handleLogin,
+    '/api/auth.revoke': v1_revoke
   }
 }

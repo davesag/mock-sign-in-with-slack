@@ -1,6 +1,6 @@
 class Cache {
   constructor() {
-    this.database = {}
+    this.reset()
   }
 
   get(key) {
@@ -13,6 +13,10 @@ class Cache {
 
   clear(key) {
     delete this.database[key]
+  }
+
+  reset() {
+    this.database = {}
   }
 }
 

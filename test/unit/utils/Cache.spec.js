@@ -33,4 +33,17 @@ describe('src/utils/Cache', () => {
       expect(result).to.be.undefined
     })
   })
+
+  describe('reset', () => {
+    before(() => {
+      cache = new Cache()
+      cache.set(key, value)
+      cache.reset()
+      result = cache.get(key)
+    })
+
+    it('cleared the keys from the cache', () => {
+      expect(result).to.be.undefined
+    })
+  })
 })
