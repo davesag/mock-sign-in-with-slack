@@ -29,7 +29,7 @@ describe('src/api/v1/revoke', () => {
     const req = mockRequest({ query: { token } })
 
     before(() => {
-      mockCache.returns(user)
+      mockCache.returns()
       revoke(req, res)
     })
 
