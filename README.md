@@ -4,6 +4,17 @@ A very simple mock server that emulates the functions of the Sign-in With Slack 
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
 
+## Branches
+
+| Branch | Tests | Code Coverage | Comments |
+| ------ | ----- | ------------- | ---------|
+| `develop` | [circleci badge] | [codecov badge] | Work in progress |
+| `master` | [circleci badge] | [codecov badge] | Latest Production Release |
+
+## Docker Image
+
+* [`davesag/mock-sign-in-with-slack`]()
+
 ## Configuration
 
 Set the following environment variables
@@ -12,10 +23,10 @@ Set the following environment variables
 |--------------|------------|----------|
 |`PORT`|8282|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
-| `REDIRECT_URI` |  | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below |
+|`REDIRECT_URI` |  | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
 |`MATCH_SCOPE`| | Email fragments and their associated scopes.  E.g. `"MATCH_SCOPE" : "@admin:admin"` will tell the oAuth server to allow anyone with email address `*@admin*` to have the scope `'admin'` if requested |
-| `TEAM_ID` | | The `team_id` to return with a successful login |
+|`TEAM_ID` | | The `team_id` to return with a successful login |
 
 ## API
 
@@ -88,10 +99,10 @@ You'll get back something like
 
 ```
 {
-    "ok": true,
-    "access_token": "xoxp-1111827399-16111519414-20367011469-5f89a31i07",
-    "scope": "identity.basic",
-    "team_id": "T0G9PQBBK"
+  "ok": true,
+  "access_token": "xoxp-1111827399-16111519414-20367011469-5f89a31i07",
+  "scope": "identity.basic",
+  "team_id": "T0G9PQBBK"
 }
 ```
 
