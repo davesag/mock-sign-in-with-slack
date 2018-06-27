@@ -49,9 +49,17 @@ Your UI sends a GET request to the url
 
 #### What it does
 
-We check the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (we don't care what it is), then, if all is good, we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
+We check the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (we don't care what it is), then, if all is good, we present the user a mock login form that requests
 
-If the login request is not successful we redirect back with `?error=SOME-ERROR-CODE` instead.
+* `name`
+* `email` (if the scope includes `identity.email`)
+* `isAdmin` (if the scope includes `admin`)
+
+We keep this information in memory (important to note we don't bother persisting this data so don't rely on it beyond the initial auth flow)
+
+Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
+
+If the login request is not successful (because of mismatched `client_id`, etc) we redirect back with `?error=SOME-ERROR-CODE` instead.
 
 #### A word on Scopes
 
