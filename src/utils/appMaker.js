@@ -6,6 +6,8 @@ const genericErrors = require('src/utils/genericErrors')
 
 const makeApp = () => {
   const app = express()
+  app.set('view engine', 'pug')
+  app.set('views', './src/views')
   app.use(cors())
   app.use(express.urlencoded({ extended: false }))
   // add any other middlewares here

@@ -1,10 +1,24 @@
 /* eslint-disable camelcase */
-const { ping, versions } = require('src/api')
+const {
+  ping,
+  versions,
+  v1_authorize,
+  framework_handleLogin,
+  framework_showCode,
+  v1_tokenForCode,
+  v1_identity
+} = require('src/api')
 
 module.exports = {
   get: {
     '/': versions,
-    '/ping': ping
+    '/ping': ping,
+    '/oauth/authorize': v1_authorize,
+    '/show-code': framework_showCode,
+    '/api/oauth.access': v1_tokenForCode,
+    '/api/users.identity': v1_identity
   },
-  post: {}
+  post: {
+    '/login': framework_handleLogin
+  }
 }

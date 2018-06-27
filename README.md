@@ -25,10 +25,9 @@ Set the following environment variables
 |--------------|------------|----------|
 |`PORT`|8282|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
-|`REDIRECT_URI` |  | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below |
+|`REDIRECT_URI` | `/showCode` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
-|`MATCH_SCOPE`| | Email fragments and their associated scopes.  E.g. `"MATCH_SCOPE" : "@admin:admin"` will tell the oAuth server to allow anyone with email address `*@admin*` to have the scope `'admin'` if requested |
-|`TEAM_ID` | | The `team_id` to return with a successful login |
+|`TEAM_ID` | `test-team-id` | The `team_id` to return with a successful login |
 
 ## API
 
@@ -61,7 +60,7 @@ We keep this information in memory (important to note we don't bother persisting
 
 Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
 
-If the login request is not successful (because of mismatched `client_id`, etc) we redirect back with `?error=SOME-ERROR-CODE` instead.
+If the login request is not successful we redirect back with `?error=SOME-ERROR-CODE` instead, or raise an error, depending on the severity of the problem.
 
 #### A word on Scopes
 
