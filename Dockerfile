@@ -1,19 +1,14 @@
 FROM node:10-alpine
-MAINTAINER david.sag@industrie.co
+MAINTAINER davesag@gmail.com
 
-WORKDIR /InformationDisorderProject/services/api-gateway
+WORKDIR /davesag/mock-sign-in-with-slack
 
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm install
 
 COPY src src
-COPY tasks tasks
-# COPY seed-data seed-data
-COPY config config
 COPY index.js index.js
-COPY .sequelizerc .sequelizerc
-# COPY .env .env
 
-EXPOSE 9000
+EXPOSE 8282
 ENTRYPOINT ["npm" , "start" ]

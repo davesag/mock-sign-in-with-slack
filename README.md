@@ -1,10 +1,8 @@
 # mock-sign-in-with-slack
 
-A very simple mock server that emulates the functions of the Sign-in With Slack system.  use this for Integration testing systems that require simple Slack sign-in.
+A very simple mock server that emulates the functions of the Sign-in With Slack system. Use this for Integration testing of systems that require simple Slack sign-in.
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
-
-_This is a work in progress: When you see a green light next to `master` then it's done._
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
 
@@ -17,7 +15,7 @@ _This is a work in progress: When you see a green light next to `master` then it
 
 ## Docker Image
 
-* [`davesag/mock-sign-in-with-slack`]() _not done yet_
+* [`davesag/mock-sign-in-with-slack`](https://hub.docker.com/r/davesag/mock-sign-in-with-slack/)
 
 ## Configuration
 
@@ -55,14 +53,15 @@ Your UI sends a GET request to the url
 We check the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (we don't care what it is), then, if all is good, we present the user a mock login form that requests
 
 * `name`
-* `email` (if the scope includes `identity.email`)
-* `isAdmin` (if the scope includes `admin`)
+* `email` (returned if the scope includes `identity.email`)
 
-We keep this information in memory (important to note we don't bother persisting this data so don't rely on it beyond the initial auth flow)
+We keep this information in memory (important to note we don't bother persisting this data so don't rely on it between server restarts)
 
 Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
 
-If the login request is not successful we redirect back with `?error=SOME-ERROR-CODE` instead, or raise an error, depending on the severity of the problem.
+Errors are thrown rather than send with redirection.
+
+If you don't have a redirection handler ready yet just leave out `redirect_uri` and the default will redirect to a page that just shows you the `code`. Use this as you see fit.
 
 #### A word on Scopes
 
@@ -70,11 +69,12 @@ As all we are mocking here is the ability to sign-in with Slack, and not the ful
 
 * `identity.basic` — This is required.
 * `identity.email` — You'll want to send this too if you need a user's email address
-* `admin` — If the user is an admin you'll want them to have this scope.
 
 We ignore all other scopes for now.  Send multiple scopes as comma-delimited values with the `scope` param. So:
 
-`&scope=identity.basic,identity.email`
+```
+&scope=identity.basic,identity.email
+```
 
 ### Exchange the Code for a Token
 
@@ -86,7 +86,7 @@ Your UI needs to send the code we sent you to a server (you need to build this) 
 
 #### Headers
 
-You must use the [`Basic Authentication`](https://tools.ietf.org/html/rfc6749#section-2.3.1) header to provide the `client_id` and `client_secret`. These must match the values defined in the environment variables `CLIENT_ID` and `CLIENT_SECRET` respectively.
+You should use the [`Basic Authentication`](https://tools.ietf.org/html/rfc6749#section-2.3.1) header to provide the `client_id` and `client_secret`. These must match the values defined in the environment variables `CLIENT_ID` and `CLIENT_SECRET` respectively.
 
 To do this you must `base64` encode the string `${client_id}:${client_secret}` and send it in the `Authorisation` header as
 
@@ -135,9 +135,6 @@ If you set the scope to `identity.basic` you'll get back this response
   "user": {
     "name": "Some User Name",
     "id": "U0G9QF9C6"
-  },
-  "team": {
-    "id": "T0G9PQBBK"
   }
 }
 ```
@@ -151,16 +148,13 @@ if you set the scope to both `identity.basic` and `identity.email` you'll get ba
     "name": "Some User Name",
     "id": "U0G9QF9C6",
     "email": "user@test.com"
-  },
-  "team": {
-    "id": "T0G9PQBBK",
   }
 }
 ```
 
 ### Revoking a Token
 
-Send a POST request to
+Send a `POST` request to
 
 ```
 /api/auth.revoke?token=xoxp-2323827393-16111519414-20367011469-5f89a31i07
@@ -174,6 +168,27 @@ Send a POST request to
   "revoked": true
 }
 ```
+
+## Development
+
+### To build and run locally
+
+Clone this (or better yet, fork it then clone your fork)
+
+    npm install
+    npm start
+
+### `.env` file
+
+You can put environment variables in a `.env` file.
+
+### Testing
+
+* `npm test` to run the unit tests
+* `npm run test:server` will run the integration tests
+* `npm run lint` will lint it
+* `npm run prettier` will prettify it
+* `npm run test:unit:cov` will run the unit tests with code coverage
 
 ## Contributing
 
