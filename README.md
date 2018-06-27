@@ -6,12 +6,14 @@ See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-sl
 
 _This is a work in progress: When you see a green light next to `master` then it's done._
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
+
 ## Branches
 
 | Branch | Tests | Code Coverage | Comments |
 | ------ | ----- | ------------- | ---------|
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) [![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/) | Latest Production Release |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Latest Production Release |
 
 ## Docker Image
 
@@ -25,10 +27,9 @@ Set the following environment variables
 |--------------|------------|----------|
 |`PORT`|8282|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
-|`REDIRECT_URI` |  | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below |
+|`REDIRECT_URI` | `/showCode` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
-|`MATCH_SCOPE`| | Email fragments and their associated scopes.  E.g. `"MATCH_SCOPE" : "@admin:admin"` will tell the oAuth server to allow anyone with email address `*@admin*` to have the scope `'admin'` if requested |
-|`TEAM_ID` | | The `team_id` to return with a successful login |
+|`TEAM_ID` | `test-team-id` | The `team_id` to return with a successful login |
 
 ## API
 
@@ -61,7 +62,7 @@ We keep this information in memory (important to note we don't bother persisting
 
 Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
 
-If the login request is not successful (because of mismatched `client_id`, etc) we redirect back with `?error=SOME-ERROR-CODE` instead.
+If the login request is not successful we redirect back with `?error=SOME-ERROR-CODE` instead, or raise an error, depending on the severity of the problem.
 
 #### A word on Scopes
 
