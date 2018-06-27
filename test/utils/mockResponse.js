@@ -5,6 +5,8 @@ const mockResponse = (options = {}) => {
     json: spy(),
     send: spy(),
     end: spy(),
+    render: spy(),
+    redirect: spy(),
     ...options
   }
   res.status = stub().returns(res)

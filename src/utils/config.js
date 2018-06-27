@@ -5,4 +5,4 @@ const PORT = process.env.PORT || 8282
 const REDIRECT_URI = process.env.REDIRECT_URI || '/show-code'
 const TEAM_ID = process.env.TEAM_ID || 'test-team-id'
 
-module.exports = { env, CLIENT_ID, CLIENT_SECRET, PORT, REDIRECT_URI }
+module.exports = { env, CLIENT_ID, CLIENT_SECRET, PORT, REDIRECT_URI, TEAM_ID }

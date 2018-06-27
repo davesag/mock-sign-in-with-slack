@@ -1,8 +1,6 @@
 const HttpError = require('node-http-error')
-const { CLIENT_ID, CLIENT_SECRET, TEAM_ID } = require('src/utils/config')
 const ERRORS = require('src/errors')
-const { tokensByCode, usersByToken } = require('src/utils/store')
-const decodeBasic = require('src/helpers/decodeBasic')
+const { usersByToken } = require('src/utils/store')
 
 const identity = (req, res) => {
   const { token } = req.query

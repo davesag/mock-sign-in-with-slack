@@ -1,5 +1,6 @@
 const ERRORS = {
   // simple errors
+  MISSING_CLIENT_ID: 'You must provide a valid client_id',
   INVALID_CLIENT_ID: 'An invalid clientId was supplied',
   INVALID_REQUEST: 'The request is invalid',
   MISSING_REDIRECT_URI: 'You must supply a redirect uri',

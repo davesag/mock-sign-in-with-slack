@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const HttpError = require('node-http-error')
 const { CLIENT_ID, CLIENT_SECRET, TEAM_ID } = require('src/utils/config')
 const ERRORS = require('src/errors')

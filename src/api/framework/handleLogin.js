@@ -1,6 +1,5 @@
 const HttpError = require('node-http-error')
 const { v4 } = require('uuid')
-const url = require('url')
 const ERRORS = require('src/errors')
 
 const { CLIENT_ID, REDIRECT_URI } = require('src/utils/config')
@@ -8,25 +7,27 @@ const makeUser = require('src/helpers/makeUser')
 const { usersById, usersByToken, tokensByCode } = require('src/utils/store')
 
 const handleLogin = (req, res) => {
-  console.log(req.body)
   const {
     client_id: clientId,
     scope,
     redirect_uri: redirectUri,
-    state,
+    // state,
     name,
-    email,
-    isAdmin
+    email
   } = req.body
-  if (clientId && clientId !== CLIENT_ID)
-    throw new HttpError(400, ERRORS.INVALID_CLIENT_ID)
+  if (!clientId) throw new HttpError(400, ERRORS.MISSING_CLIENT_ID)
+  if (clientId !== CLIENT_ID) throw new HttpError(400, ERRORS.INVALID_CLIENT_ID)
+  /* istanbul ignore next */
   if (!REDIRECT_URI && !redirectUri)
     throw new HttpError(400, ERRORS.MISSING_REDIRECT_URI)
   if (REDIRECT_URI && redirectUri && REDIRECT_URI !== redirectUri)
     throw new HttpError(400, ERRORS.INVALID_REDIRECT_URI)
 
-  const redirectTo = redirectUri || REDIRECT_URI
   const scopes = scope.split(',')
+  if (!scopes.includes('identity.basic'))
+    throw new HttpError(400, ERRORS.INVALID_SCOPE)
+
+  const redirectTo = redirectUri || /* istanbul ignore next */ REDIRECT_URI
 
   const user = makeUser({ scopes, name, email })
   const code = v4()
@@ -34,7 +35,7 @@ const handleLogin = (req, res) => {
   usersById.set(user.id, user)
   usersByToken.set(token, user)
   tokensByCode.set(code, token)
-
+  // add state
   res.redirect(`${redirectTo}?code=${code}`)
 }
 
