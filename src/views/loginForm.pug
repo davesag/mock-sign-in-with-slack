@@ -1,0 +1,26 @@
+html
+  head
+    title Fake Sign-In With Slack Form
+  body
+    h1 Sign-In With Slack
+    h3 Request parameters:
+    table
+      tr
+        th Param
+        th Value
+      tbody
+        each key in Object.keys(query)
+          tr
+            td: tt= key
+            td: tt= query[key]
+    h3 Generate Token
+    form(action='/login', method='post')
+      each key in Object.keys(query)
+        input(type='hidden', name=key, value=query[key])
+      label(for='name') Name:
+      input#name(name='name')
+      br
+      label(for='email') Email:
+      input#email(type='email', name='email')
+      br
+      button(type='submit') Log in
