@@ -4,16 +4,18 @@ A very simple mock server that emulates the functions of the Sign-in With Slack 
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
 
+_This is a work in progress: When you see a green light next to `master` then it's done._
+
 ## Branches
 
 | Branch | Tests | Code Coverage | Comments |
 | ------ | ----- | ------------- | ---------|
-| `develop` | [circleci badge] | [codecov badge] | Work in progress |
-| `master` | [circleci badge] | [codecov badge] | Latest Production Release |
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Latest Production Release |
 
 ## Docker Image
 
-* [`davesag/mock-sign-in-with-slack`]()
+* [`davesag/mock-sign-in-with-slack`]() _not done yet_
 
 ## Configuration
 
