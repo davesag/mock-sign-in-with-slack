@@ -9,8 +9,8 @@ const { CLIENT_ID, CLIENT_SECRET, TEAM_ID } = require('src/utils/config')
 
 describe('src/api/v1/tokenForCode', () => {
   const res = mockResponse()
-  mockTokenCache = sinon.stub()
-  mockUserCache = sinon.stub()
+  const mockTokenCache = sinon.stub()
+  const mockUserCache = sinon.stub()
 
   const mockDecoder = sinon.stub()
 

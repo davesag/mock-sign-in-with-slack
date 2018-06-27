@@ -7,7 +7,7 @@ const mockResponse = require('test/utils/mockResponse')
 
 describe('src/api/v1/identity', () => {
   const res = mockResponse()
-  mockCache = sinon.stub()
+  const mockCache = sinon.stub()
 
   const mockStore = {
     usersByToken: {
