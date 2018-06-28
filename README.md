@@ -25,7 +25,7 @@ Set the following environment variables
 |--------------|------------|----------|
 |`PORT`|8282|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
-|`REDIRECT_URI` | `/showCode` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
+|`REDIRECT_URI` | `/show-code` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
 |`TEAM_ID` | `test-team-id` | The `team_id` to return with a successful login |
 |`SEED_USERS` | | A `base64` encoded JSON array of users with scopes and codes to use as seed data |
