@@ -1,6 +1,8 @@
 require('dotenv').config()
-const Server = require('./src/server')
-const logger = require('./src/utils/logger')
+const Server = require('src/server')
+const logger = require('src/utils/logger')
+const { SEED_USERS } = require('src/utils/config')
+const seedUsers = require('src/utils/seedUsers')
 
 process.on('unhandledRejection', (reason, p) => {
   if (reason.code && reason.code === 'ECONNREFUSED') {
@@ -14,4 +16,10 @@ process.on('unhandledRejection', (reason, p) => {
 
 Server.start().then(() => {
   logger.debug('Server Started')
+  if (!SEED_USERS) {
+    logger.debug('No users to seed')
+  } else {
+    seedUsers(SEED_USERS)
+    logger.debug('Seeded users')
+  }
 })

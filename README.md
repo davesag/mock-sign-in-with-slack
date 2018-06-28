@@ -28,6 +28,43 @@ Set the following environment variables
 |`REDIRECT_URI` | `/showCode` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
 |`TEAM_ID` | `test-team-id` | The `team_id` to return with a successful login |
+|`SEED_USERS` | | A `base64` encoded JSON array of users with scopes and codes to use as seed data |
+
+### Seeding Users
+
+Supply an environment variable as follows
+
+```
+SEED_USERS=W3sibmFtZSI6IlRlc3QgVXNlciIsImVtYWlsIjoidGVzdEB0ZXN0LnRlcyIsInNjb3BlcyI6WyJpZGVudGl0eS5iYXNpYyIsImlkZW50aXR5LmVtYWlsIl0sImNvZGUiOiJhYmNkLTEyMyJ9LHsibmFtZSI6IlRlc3QgQWRtaW4iLCJlbWFpbCI6InRlc3RhZG1pbkB0ZXN0LnRlcyIsInNjb3BlcyI6WyJpZGVudGl0eS5iYXNpYyIsImlkZW50aXR5LmVtYWlsIiwiYWRtaW4iXSwiY29kZSI6ImFiY2QtNjY2In1d
+```
+
+This decodes to
+
+```
+[
+  {
+    "name": "Test User",
+    "email": "test@test.tes",
+    "scopes": [
+      "identity.basic",
+      "identity.email"
+    ],
+    "code": "abcd-123"
+  },
+  {
+    "name": "Test Admin",
+    "email": "testadmin@test.tes",
+    "scopes": [
+      "identity.basic",
+      "identity.email",
+      "admin"
+    ],
+    "code": "abcd-666"
+  }
+]
+```
+
+The Mock server will pre-load this on startup so your integration tests or whatever can expect some users.
 
 ## API
 
