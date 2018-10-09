@@ -10,7 +10,6 @@
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
     "seed": "NODE_PATH=. node tasks/seed",
     "start": "NODE_PATH=. node index.js",
@@ -97,5 +96,10 @@
   },
   "greenkeeper": {
     "ignore": []
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
