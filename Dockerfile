@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:11-alpine
 MAINTAINER davesag@gmail.com
 
 WORKDIR /davesag/mock-sign-in-with-slack
