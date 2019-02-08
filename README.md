@@ -23,7 +23,7 @@ Set the following environment variables
 
 |Variable|Default|Notes|
 |--------------|------------|----------|
-|`PORT`|8282|The port the server listens on|
+|`PORT`|`8282`|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
 |`REDIRECT_URI` | `/show-code` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
@@ -70,7 +70,7 @@ The Mock server will pre-load this on startup so your integration tests or whate
 
 ### Get a Code
 
-Your UI sends a GET request to the url
+Your website or app sends a `GET` request to the url
 
 ```
 /oauth/authorize?client_id=CLIENT_ID&scope=identity.basic
@@ -96,7 +96,7 @@ We keep this information in memory (important to note we don't bother persisting
 
 Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
 
-Errors are thrown rather than send with redirection.
+Errors are thrown rather than sent with redirection.
 
 If you don't have a redirection handler ready yet just leave out `redirect_uri` and the default will redirect to a page that just shows you the `code`. Use this as you see fit.
 
@@ -156,7 +156,7 @@ You'll get back something like
 
 ### Get the User Details
 
-Once your server has retreived the token it can then use that token to request additional user data.  Send a GET request to
+Once your server has retrieved the token it can then use that token to request additional user data.  Send a `GET` request to
 
 ```
 /api/users.identity?token=xoxp-1111827393-16111519414-20367011469-5f89a31i07
