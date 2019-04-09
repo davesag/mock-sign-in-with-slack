@@ -1,9 +1,7 @@
 const { expect } = require('chai')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
+const { mockRequest, mockResponse } = require('mock-req-res')
 
 describe('src/api/v1/identity', () => {
   const res = mockResponse()

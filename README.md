@@ -1,6 +1,6 @@
 # mock-sign-in-with-slack
 
-A very simple mock server that emulates the functions of the Sign-in With Slack system. Use this for Integration testing of systems that require simple Slack sign-in.
+A  simple mock server that emulates the functions of the [Sign-in With Slack](https://api.slack.com/docs/sign-in-with-slack) system. Use this for Integration testing of systems that require simple Slack sign-in.
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
 
@@ -8,6 +8,7 @@ See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-sl
 
 ## Branches
 
+<!-- prettier-ignore -->
 | Branch | Tests | Code Coverage | Comments |
 | ------ | ----- | ------------- | ---------|
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
@@ -21,14 +22,15 @@ See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-sl
 
 Set the following environment variables
 
-|Variable|Default|Notes|
+<!-- prettier-ignore -->
+|Variable      |Default     |Notes     |
 |--------------|------------|----------|
 |`PORT`|`8282`|The port the server listens on|
 |`CLIENT_ID`|`test-client-id`|The [client id](https://tools.ietf.org/html/rfc6749#section-2.2). |
 |`REDIRECT_URI` | `/show-code` | If supplied then you can leave out the `redirect_uri` param from the `authorize` request below. The default will just redirect to a page that displays the code.  Use this for debugging. |
 |`CLIENT_SECRET`|`test-client-secret`|The [client secret](https://tools.ietf.org/html/rfc6749#section-2.3.1). |
 |`TEAM_ID` | `test-team-id` | The `team_id` to return with a successful login |
-|`SEED_USERS` | | A `base64` encoded JSON array of users with scopes and codes to use as seed data |
+|`SEED_USERS` | none | A `base64` encoded JSON array of users with scopes and codes to use as seed data |
 
 ### Seeding Users
 
@@ -78,6 +80,7 @@ Your website or app sends a `GET` request to the url
 
 #### Request Params
 
+<!-- prettier-ignore -->
 | Param | Required | Notes |
 | ----- | -------- | ----- |
 | `client_id` | yes | This must match the one you configured with the `CLIENT_ID` environment variable |
@@ -123,7 +126,7 @@ Your UI needs to send the code we sent you to a server (you need to build this) 
 
 #### Headers
 
-You should use the [`Basic Authentication`](https://tools.ietf.org/html/rfc6749#section-2.3.1) header to provide the `client_id` and `client_secret`. These must match the values defined in the environment variables `CLIENT_ID` and `CLIENT_SECRET` respectively.
+Use the [`Basic Authentication`](https://tools.ietf.org/html/rfc6749#section-2.3.1) header to provide the `client_id` and `client_secret`. These must match the values defined in the environment variables `CLIENT_ID` and `CLIENT_SECRET` respectively.
 
 To do this you must `base64` encode the string `${client_id}:${client_secret}` and send it in the `Authorisation` header as
 
@@ -133,6 +136,7 @@ Authorization: `Basic ${base64encodedIdAndSecret}`
 
 #### Request Params
 
+<!-- prettier-ignore -->
 | Param | Required | Notes |
 | ----- | -------- | ----- |
 | `client_id` | yes | Either send this as a param, or send it in the `Authorization` header (Auth header preferred) |

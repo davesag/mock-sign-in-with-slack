@@ -1,10 +1,8 @@
 const { expect } = require('chai')
 const proxyquire = require('proxyquire')
+const { mockRequest, mockResponse } = require('mock-req-res')
 
 const { name, version, description } = require('package.json')
-
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
 
 const fakeUptime = 100
 const mockUptime = () => fakeUptime
