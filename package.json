@@ -1,6 +1,6 @@
 {
   "name": "@davesag/mock-sign-in-with-slack",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A mock server that emulates the main features of the Sign-in With Slack system.",
   "engines": {
     "node": ">= 11.9.0",
