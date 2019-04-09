@@ -1,12 +1,10 @@
 const { expect } = require('chai')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
+const { mockRequest, mockResponse } = require('mock-req-res')
+const HttpError = require('node-http-error')
 
 const mockLogger = require('test/utils/mockLogger')
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
-
-const HttpError = require('node-http-error')
 
 const ERRORS = require('src/errors')
 

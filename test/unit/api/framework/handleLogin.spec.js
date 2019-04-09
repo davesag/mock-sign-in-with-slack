@@ -1,10 +1,9 @@
 const { expect } = require('chai')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
+const { mockRequest, mockResponse } = require('mock-req-res')
 const { REDIRECT_URI, CLIENT_ID } = require('src/utils/config')
 
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
 const mockUuid = require('test/utils/mockUuid')
 
 describe('src/api/framework/handleLogin', () => {
