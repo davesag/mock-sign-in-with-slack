@@ -1,7 +1,7 @@
 const { expect } = require('chai')
+const { mockRequest } = require('mock-req-res')
 
 const decodeBasic = require('src/helpers/decodeBasic')
-const mockRequest = require('test/utils/mockRequest')
 
 describe('src/helpers/decodeBasic', () => {
   let result
@@ -24,7 +24,7 @@ describe('src/helpers/decodeBasic', () => {
   })
 
   context('when there is no auth header', () => {
-    const req = mockRequest()
+    const req = mockRequest({ headers: {} })
 
     before(() => {
       result = decodeBasic(req)

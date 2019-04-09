@@ -1,9 +1,7 @@
 const { expect } = require('chai')
+const { mockRequest, mockResponse } = require('mock-req-res')
 
 const { REDIRECT_URI, CLIENT_ID } = require('src/utils/config')
-
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
 
 const authorize = require('src/api/v1/authorize')
 

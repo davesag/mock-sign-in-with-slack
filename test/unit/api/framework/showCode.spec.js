@@ -1,9 +1,7 @@
 const { expect } = require('chai')
+const { mockRequest, mockResponse } = require('mock-req-res')
 
 const showCode = require('src/api/framework/showCode')
-
-const mockRequest = require('test/utils/mockRequest')
-const mockResponse = require('test/utils/mockResponse')
 
 describe('src/api/framework/showCode', () => {
   const res = mockResponse()

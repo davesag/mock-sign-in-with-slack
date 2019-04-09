@@ -1,5 +1,5 @@
 const path = require('path')
-const traverse = require('src/utils/traverse')
+const traverse = require('traverse-folders')
 
 const pathSeparator = new RegExp(path.sep, 'g')
 
@@ -11,7 +11,7 @@ const processor = file => {
   const name = file.slice(apiPath.length + 1, -3).replace(pathSeparator, '_')
   names.push(name)
 }
-traverse(apiPath, 'index.js', processor)
+traverse(apiPath, processor)
 
 const mockApi = names.reduce((acc, elem) => {
   acc[elem] = noop
