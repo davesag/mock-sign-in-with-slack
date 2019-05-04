@@ -1,8 +1,8 @@
 const { expect } = require('chai')
 const request = require('supertest')
-const { get } = require('test/server/serverCache')
+const { get } = require('test/utils/serverCache')
 
-const fakeUser = require('test/server/fakeUser')
+const fakeUser = require('test/utils/fakeUser')
 
 const { usersByToken } = require('src/utils/store')
 
@@ -18,16 +18,13 @@ describe('POST /api/auth.revoke', () => {
     usersByToken.reset()
   })
 
-  it('returns an Okay result and status code 200', done => {
-    request(get())
+  it('returns an Okay result and status code 200', async () => {
+    const res = await request(get())
       .post(`/api/auth.revoke?token=${token}`)
       .expect(200)
-      .end((err, res) => {
-        expect(err).to.not.exist
-        expect(res.body).to.have.property('ok', true)
-        expect(res.body).to.have.property('revoked', true)
-        expect(usersByToken.get(token)).to.be.undefined
-        done()
-      })
+
+    expect(res.body).to.have.property('ok', true)
+    expect(res.body).to.have.property('revoked', true)
+    expect(usersByToken.get(token)).to.be.undefined
   })
 })
