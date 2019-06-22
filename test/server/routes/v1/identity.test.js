@@ -1,9 +1,9 @@
 const request = require('supertest')
-const { get } = require('test/server/serverCache')
+const { get } = require('test/utils/serverCache')
 
 const { usersByToken } = require('src/utils/store')
 
-const fakeUser = require('test/server/fakeUser')
+const fakeUser = require('test/utils/fakeUser')
 
 describe('GET /api/users.identity', () => {
   const token = 'some-token'
@@ -23,11 +23,9 @@ describe('GET /api/users.identity', () => {
   })
 
   context('given a valid token', () => {
-    it('returns an Okay result and status code 200', done => {
+    it('returns an Okay result and status code 200', async () =>
       request(get())
         .get(`/api/users.identity?token=${token}`)
-        .expect(200, expected)
-        .end(done)
-    })
+        .expect(200, expected))
   })
 })

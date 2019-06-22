@@ -36,13 +36,13 @@ Set the following environment variables
 
 Supply an environment variable as follows
 
-```
+```sh
 SEED_USERS=W3sibmFtZSI6IlRlc3QgVXNlciIsImVtYWlsIjoidGVzdEB0ZXN0LnRlcyIsInNjb3BlcyI6WyJpZGVudGl0eS5iYXNpYyIsImlkZW50aXR5LmVtYWlsIl0sImNvZGUiOiJhYmNkLTEyMyJ9LHsibmFtZSI6IlRlc3QgQWRtaW4iLCJlbWFpbCI6InRlc3RhZG1pbkB0ZXN0LnRlcyIsInNjb3BlcyI6WyJpZGVudGl0eS5iYXNpYyIsImlkZW50aXR5LmVtYWlsIiwiYWRtaW4iXSwiY29kZSI6ImFiY2QtNjY2In1d
 ```
 
 This decodes to
 
-```
+```json
 [
   {
     "name": "Test User",
@@ -74,7 +74,7 @@ The Mock server will pre-load this on startup so your integration tests or whate
 
 Your website or app sends a `GET` request to the url
 
-```
+```HTTP
 /oauth/authorize?client_id=CLIENT_ID&scope=identity.basic
 ```
 
@@ -112,7 +112,7 @@ As all we are mocking here is the ability to sign-in with Slack, and not the ful
 
 We ignore all other scopes for now.  Send multiple scopes as comma-delimited values with the `scope` param. So:
 
-```
+```HTTP
 &scope=identity.basic,identity.email
 ```
 
@@ -120,7 +120,7 @@ We ignore all other scopes for now.  Send multiple scopes as comma-delimited val
 
 Your UI needs to send the code we sent you to a server (you need to build this) which will then send a `application/x-www-form-urlencoded` GET request to
 
-```
+```HTTP
 /api/oauth.access?code=THE-CODE-WE-SENT-YOU
 ```
 
@@ -130,7 +130,7 @@ Use the [`Basic Authentication`](https://tools.ietf.org/html/rfc6749#section-2.3
 
 To do this you must `base64` encode the string `${client_id}:${client_secret}` and send it in the `Authorisation` header as
 
-```
+```js
 Authorization: `Basic ${base64encodedIdAndSecret}`
 ```
 
@@ -149,7 +149,7 @@ Authorization: `Basic ${base64encodedIdAndSecret}`
 
 You'll get back something like
 
-```
+```json
 {
   "ok": true,
   "access_token": "xoxp-1111827399-16111519414-20367011469-5f89a31i07",
@@ -162,7 +162,7 @@ You'll get back something like
 
 Once your server has retrieved the token it can then use that token to request additional user data.  Send a `GET` request to
 
-```
+```HTTP
 /api/users.identity?token=xoxp-1111827393-16111519414-20367011469-5f89a31i07
 ```
 
@@ -170,7 +170,7 @@ Once your server has retrieved the token it can then use that token to request a
 
 If you set the scope to `identity.basic` you'll get back this response
 
-```
+```json
 {
   "ok": true,
   "user": {
@@ -182,7 +182,7 @@ If you set the scope to `identity.basic` you'll get back this response
 
 if you set the scope to both `identity.basic` and `identity.email` you'll get back
 
-```
+```json
 {
   "ok": true,
   "user": {
@@ -197,13 +197,13 @@ if you set the scope to both `identity.basic` and `identity.email` you'll get ba
 
 Send a `POST` request to
 
-```
+```HTTP
 /api/auth.revoke?token=xoxp-2323827393-16111519414-20367011469-5f89a31i07
 ```
 
 #### Response
 
-```
+```json
 {
   "ok": true,
   "revoked": true
@@ -216,8 +216,10 @@ Send a `POST` request to
 
 Clone this (or better yet, fork it then clone your fork)
 
-    npm install
-    npm start
+```sh
+npm install
+npm start
+```
 
 ### `.env` file
 
@@ -230,6 +232,7 @@ You can put environment variables in a `.env` file.
 * `npm run lint` will lint it
 * `npm run prettier` will prettify it
 * `npm run test:unit:cov` will run the unit tests with code coverage
+* `npm run test:mutants` will run the mutation tests
 
 ## Contributing
 

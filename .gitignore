@@ -59,3 +59,6 @@ typings/
 
 # next.js build output
 .next
+
+# macOS desktop metadata
+.DS_Store
