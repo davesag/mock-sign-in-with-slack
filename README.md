@@ -1,18 +1,8 @@
 # mock-sign-in-with-slack
 
-A  simple mock server that emulates the functions of the [Sign-in With Slack](https://api.slack.com/docs/sign-in-with-slack) system. Use this for Integration testing of systems that require simple Slack sign-in.
+A  mock server that emulates the functions of the [Sign-in With Slack](https://api.slack.com/docs/sign-in-with-slack) system. Use this for Integration testing of systems that require Slack sign-in.
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
-
-## Branches
-
-<!-- prettier-ignore -->
-| Branch | Tests | Code Coverage | Comments |
-| ------ | ----- | ------------- | ---------|
-| `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Latest Production Release |
 
 ## Docker Image
 
@@ -66,7 +56,7 @@ This decodes to
 ]
 ```
 
-The Mock server will pre-load this on startup so your integration tests or whatever can expect some users.
+The `mock-sign-in-with-slack` server will pre-load this on startup so your integration tests or whatever can expect some users.
 
 ## API
 
@@ -90,14 +80,14 @@ Your website or app sends a `GET` request to the url
 
 #### What it does
 
-We check the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (we don't care what it is), then, if all is good, we present the user a mock login form that requests
+Checks the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (can have any value), then, if all is good, a mock login form is presented that requests
 
 * `name`
 * `email` (returned if the scope includes `identity.email`)
 
-We keep this information in memory (important to note we don't bother persisting this data so don't rely on it between server restarts)
+This information is retained in memory only so don't rely on it between server restarts.
 
-Then we redirect back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
+The form then redirects back to the supplied `redirect_uri` with the appended `?code=SOME-ACCESS-CODE`
 
 Errors are thrown rather than sent with redirection.
 
@@ -105,12 +95,12 @@ If you don't have a redirection handler ready yet just leave out `redirect_uri` 
 
 #### A word on Scopes
 
-As all we are mocking here is the ability to sign-in with Slack, and not the full-slack API, we only care about the following scopes
+All that is being mocked here is the ability to sign-in with Slack, and not the full-slack API. The following scopes sre supported:
 
 * `identity.basic` — This is required.
 * `identity.email` — You'll want to send this too if you need a user's email address
 
-We ignore all other scopes for now.  Send multiple scopes as comma-delimited values with the `scope` param. So:
+All other scopes are ignored.  Send multiple scopes as comma-delimited values with the `scope` param. So:
 
 ```HTTP
 &scope=identity.basic,identity.email
@@ -118,7 +108,7 @@ We ignore all other scopes for now.  Send multiple scopes as comma-delimited val
 
 ### Exchange the Code for a Token
 
-Your UI needs to send the code we sent you to a server (you need to build this) which will then send a `application/x-www-form-urlencoded` GET request to
+Your UI needs to send the code the mock server sent you to your server which will then send a `application/x-www-form-urlencoded` GET request to
 
 ```HTTP
 /api/oauth.access?code=THE-CODE-WE-SENT-YOU
@@ -211,6 +201,16 @@ Send a `POST` request to
 ```
 
 ## Development
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
+
+## Branches
+
+<!-- prettier-ignore -->
+| Branch | Tests | Code Coverage | Comments |
+| ------ | ----- | ------------- | ---------|
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Latest Production Release |
 
 ### To build and run locally
 
