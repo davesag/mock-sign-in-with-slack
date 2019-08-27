@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 const decodeBasic = req => {
   const auth = req.headers['authorization']
   if (!auth) return {}
