@@ -14,7 +14,7 @@ process.on('unhandledRejection', (reason, p) => {
   }
 })
 
-Server.start().then(() => {
+Server.start().then(({ close }) => {
   logger.debug('Server Started')
   if (!SEED_USERS) {
     logger.debug('No users to seed')
@@ -22,4 +22,9 @@ Server.start().then(() => {
     seedUsers(SEED_USERS)
     logger.debug('Seeded users')
   }
+
+  process.on('SIGTERM', () => {
+    logger.info('SIGTERM received. Closing server.')
+    close()
+  })
 })
