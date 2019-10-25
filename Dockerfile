@@ -1,15 +1,18 @@
-FROM node:12-alpine
+FROM node:12-slim
 MAINTAINER davesag@gmail.com
-
-WORKDIR /davesag/mock-sign-in-with-slack
-
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-
-RUN HUSKY_SKIP_INSTALL=true npm install --production
-
-COPY src src
-COPY index.js index.js
-
 EXPOSE 8282
-ENTRYPOINT ["npm" , "start" ]
+
+RUN mkdir /app && chown -R node:node /app
+WORKDIR /app
+
+COPY --chown=node:node package.json package-lock.json src index.js ./
+
+ENV NODE_PATH .
+ENV NODE_ENV production
+ENV HUSKY_SKIP_INSTALL true
+
+USER node
+
+RUN npm ci
+
+ENTRYPOINT ["node" , " index.js" ]
