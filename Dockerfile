@@ -13,6 +13,6 @@ ENV HUSKY_SKIP_INSTALL true
 
 USER node
 
-RUN npm ci
+RUN npm install --production
 
 ENTRYPOINT ["node" , " index.js" ]
