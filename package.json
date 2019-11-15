@@ -2,11 +2,23 @@
   "name": "@davesag/mock-sign-in-with-slack",
   "version": "1.1.0",
   "description": "A mock server that emulates the main features of the Sign-in With Slack system.",
+  "author": "Dave Sag <davesag@gmail.com>",
+  "type": "commonjs",
+  "license": "MIT",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/davesag"
+  },
+  "private": true,
   "engines": {
     "node": ">= 12.13.0",
     "npm": ">= 6.12.0"
   },
   "main": "index.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
@@ -27,8 +39,6 @@
     "api",
     "mock"
   ],
-  "author": "Dave Sag <davesag@gmail.com>",
-  "license": "MIT",
   "repository": "https://github.com/davesag/mock-sign-in-with-slack.git",
   "bugs": {
     "url": "https://github.com/davesag/mock-sign-in-with-slack/issues"
@@ -85,6 +95,11 @@
       "git add"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "nyc": {
     "check-coverage": true,
     "per-file": true,
@@ -108,10 +123,5 @@
   },
   "greenkeeper": {
     "ignore": []
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
