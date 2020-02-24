@@ -51,7 +51,7 @@
     "node-http-error": "^2.0.0",
     "pug": "^2.0.4",
     "traverse-folders": "^1.1.2",
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.0"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^2.5.0",
