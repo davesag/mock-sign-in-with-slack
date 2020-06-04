@@ -53,7 +53,7 @@ describe('src/utils/genericErrors', () => {
     })
 
     context('when path is unknown', () => {
-      const req = mockRequest()
+      const req = mockRequest({ path: undefined })
 
       before(() => {
         genericErrors(error, req, res, next)
