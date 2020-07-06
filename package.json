@@ -30,7 +30,9 @@
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:unit:cov": "NODE_ENV=test NODE_PATH=. nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:server": "NODE_ENV=test NODE_PATH=. mocha ./test/server/ --require ./test/serverTestHelper.js --file ./test/serverTestInit.js --recursive ",
-    "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run"
+    "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "slack",
@@ -51,7 +53,8 @@
     "node-http-error": "^2.0.0",
     "pug": "^3.0.0",
     "traverse-folders": "^1.1.2",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "snyk": "^1.360.0"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^3.3.0",
@@ -124,5 +127,6 @@
   },
   "greenkeeper": {
     "ignore": []
-  }
+  },
+  "snyk": true
 }
