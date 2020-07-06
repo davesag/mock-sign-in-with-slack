@@ -202,7 +202,7 @@ Send a `POST` request to
 
 ## Development
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack)
 
 ## Branches
 
