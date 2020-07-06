@@ -31,8 +31,7 @@
     "test:unit:cov": "NODE_ENV=test NODE_PATH=. nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:server": "NODE_ENV=test NODE_PATH=. mocha ./test/server/ --require ./test/serverTestHelper.js --file ./test/serverTestInit.js --recursive ",
     "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "keywords": [
     "slack",
