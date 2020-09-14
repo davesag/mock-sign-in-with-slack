@@ -59,7 +59,7 @@
     "@stryker-mutator/javascript-mutator": "^3.3.1",
     "@stryker-mutator/mocha-framework": "^3.3.1",
     "@stryker-mutator/mocha-runner": "^3.3.1",
-    "ajv": "^6.12.4",
+    "ajv": "^6.12.5",
     "chai": "^4.2.0",
     "chai-almost": "^1.0.1",
     "chai-as-promised": "^7.1.1",
