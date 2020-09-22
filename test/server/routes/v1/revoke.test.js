@@ -19,9 +19,7 @@ describe('POST /api/auth.revoke', () => {
   })
 
   it('returns an Okay result and status code 200', async () => {
-    const res = await request(get())
-      .post(`/api/auth.revoke?token=${token}`)
-      .expect(200)
+    const res = await request(get()).post(`/api/auth.revoke?token=${token}`).expect(200)
 
     expect(res.body).to.have.property('ok', true)
     expect(res.body).to.have.property('revoked', true)
