@@ -5,11 +5,7 @@ const fakeUser = (fields = {}) => {
   const lastName = fields.lastName || faker.name.lastName()
   const name = fields.name || `${firstName} ${lastName}`
   const email = fields.email || faker.internet.exampleEmail(firstName, lastName)
-  const extraScopes = faker.random.arrayElement([
-    null,
-    'identity.email',
-    'admin'
-  ])
+  const extraScopes = faker.random.arrayElement([null, 'identity.email', 'admin'])
   const scopes = fields.scopes
     ? fields.scopes
     : fields.extraScopes

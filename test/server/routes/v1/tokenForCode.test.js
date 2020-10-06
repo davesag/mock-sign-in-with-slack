@@ -8,9 +8,7 @@ const fakeUser = require('test/utils/fakeUser')
 
 describe('GET /api/oauth.access', () => {
   const scope = 'identity.basic'
-  const authToken = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString(
-    'base64'
-  )
+  const authToken = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
   const authorization = `Basic ${authToken}`
   const code = 'some-code'
   const token = 'some-token'
@@ -44,9 +42,7 @@ describe('GET /api/oauth.access', () => {
   context('passed client id and secret in params', () => {
     it('returns an Okay result and status code 200', async () =>
       request(get())
-        .get(
-          `/api/oauth.access?code=${code}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
-        )
+        .get(`/api/oauth.access?code=${code}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`)
         .expect(200, expected))
   })
 })

@@ -87,9 +87,7 @@ describe('src/utils/genericErrors', () => {
 
       it('calls logger.error with the ERRORS.GENERIC_ERROR', () => {
         expect(mockLogger.error).to.have.been.calledOnce
-        expect(mockLogger.error.args[0][0]).to.equal(
-          ERRORS.GENERIC_ERROR('test')
-        )
+        expect(mockLogger.error.args[0][0]).to.equal(ERRORS.GENERIC_ERROR('test'))
       })
 
       it('calls res.status with the status', () => {
@@ -114,9 +112,7 @@ describe('src/utils/genericErrors', () => {
 
       it('calls logger.error with the ERRORS.GENERIC_ERROR', () => {
         expect(mockLogger.error).to.have.been.calledOnce
-        expect(mockLogger.error.args[0][0]).to.equal(
-          ERRORS.GENERIC_ERROR('test', parent.name)
-        )
+        expect(mockLogger.error.args[0][0]).to.equal(ERRORS.GENERIC_ERROR('test', parent.name))
         expect(mockLogger.error.args[0][1]).to.deep.equal(genericError)
       })
 

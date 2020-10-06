@@ -6,7 +6,5 @@ describe('GET /oauth/authorize', () => {
   const scope = 'identity.basic'
 
   it('returns an Okay result and status code 200', async () =>
-    request(get())
-      .get(`/oauth/authorize?scope=${scope}&client_id=${CLIENT_ID}`)
-      .expect(200))
+    request(get()).get(`/oauth/authorize?scope=${scope}&client_id=${CLIENT_ID}`).expect(200))
 })

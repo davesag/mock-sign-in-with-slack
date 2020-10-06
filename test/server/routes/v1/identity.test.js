@@ -24,8 +24,6 @@ describe('GET /api/users.identity', () => {
 
   context('given a valid token', () => {
     it('returns an Okay result and status code 200', async () =>
-      request(get())
-        .get(`/api/users.identity?token=${token}`)
-        .expect(200, expected))
+      request(get()).get(`/api/users.identity?token=${token}`).expect(200, expected))
   })
 })

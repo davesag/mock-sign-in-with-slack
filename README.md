@@ -202,15 +202,13 @@ Send a `POST` request to
 
 ## Development
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/mock-sign-in-with-slack.svg)](https://greenkeeper.io/)
-
 ## Branches
 
 <!-- prettier-ignore -->
-| Branch | Tests | Code Coverage | Comments |
-| ------ | ----- | ------------- | ---------|
-| `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | Latest Production Release |
+| Branch | Tests | Code Coverage | Audit | Comments |
+| ------ | ----- | ------------- | ----- | ---------|
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop) | Work in progress |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master) | Latest Production Release |
 
 ### To build and run locally
 
