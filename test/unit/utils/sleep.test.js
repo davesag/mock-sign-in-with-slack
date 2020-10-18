@@ -15,7 +15,7 @@ describe('src/utils/sleep', () => {
   })
 
   it('slept', () => {
-    expect(sleptFor).to.be.at.least(sleepTime)
+    expect(sleptFor).to.be.at.least(sleepTime - 1) //  timing is not super accurate
     expect(sleptFor).to.almost.equal(sleepTime)
   })
 })
