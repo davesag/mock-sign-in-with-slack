@@ -210,6 +210,10 @@ Send a `POST` request to
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop) | Work in progress |
 | `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master) | Latest Production Release |
 
+### Prerequisites
+
+- [NodeJS](htps://nodejs.org), stick to version 14.15.0 for now (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.) The `package-lock.json` file format changed between v6 and v7 of `npm` and npm 7 causes all manner of dramas.
+
 ### To build and run locally
 
 Clone this (or better yet, fork it then clone your fork)
