@@ -11,7 +11,7 @@
   },
   "private": true,
   "engines": {
-    "node": ">= 12.13.0 < 15.x",
+    "node": ">= 12.13.0",
     "npm": ">= 6.12.0 < 7.x"
   },
   "main": "index.js",
@@ -30,7 +30,6 @@
     "test:unit": "NODE_ENV=test NODE_PATH=. mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:unit:cov": "NODE_ENV=test NODE_PATH=. nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:server": "NODE_ENV=test NODE_PATH=. mocha ./test/server/ --require ./test/serverTestHelper.js --file ./test/serverTestInit.js --recursive ",
-    "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run",
     "snyk-protect": "snyk protect"
   },
   "keywords": [
@@ -55,8 +54,6 @@
     "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "^4.0.0",
-    "@stryker-mutator/mocha-runner": "^4.0.0",
     "ajv": "^6.12.6",
     "chai": "^4.2.0",
     "chai-almost": "^1.0.1",
