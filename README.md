@@ -212,7 +212,7 @@ Send a `POST` request to
 
 ### Prerequisites
 
-- [NodeJS](htps://nodejs.org), 15.1.0+ (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.) You must use npm version 7.0.8 or better.
+- [NodeJS](htps://nodejs.org), 12.13.0+ (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
 
 ### To build and run locally
 
