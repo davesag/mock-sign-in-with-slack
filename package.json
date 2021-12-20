@@ -45,7 +45,7 @@
   "homepage": "https://github.com/davesag/mock-sign-in-with-slack#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "js-yaml": "^4.0.0",
     "node-http-error": "^2.0.0",
     "pug": "^3.0.0",
