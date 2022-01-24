@@ -1,4 +1,4 @@
-const faker = require('faker')
+const faker = require('@faker-js/faker')
 
 const fakeUser = (fields = {}) => {
   const firstName = fields.firstName || faker.name.firstName()
@@ -13,7 +13,7 @@ const fakeUser = (fields = {}) => {
     : extraScopes
     ? ['identity.basic', ...extraScopes]
     : ['identity.basic']
-  const id = fields.id || faker.random.uuid()
+  const id = fields.id || faker.datatype.uuid()
   return {
     name,
     email,
