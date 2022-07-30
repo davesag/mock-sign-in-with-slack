@@ -1,4 +1,4 @@
-FROM node:12-slim
+FROM node:18-buster
 LABEL maintainer="davesag@gmail.com"
 EXPOSE 8282
 

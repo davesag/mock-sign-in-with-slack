@@ -1,12 +1,12 @@
 # mock-sign-in-with-slack
 
-A  mock server that emulates the functions of the [Sign-in With Slack](https://api.slack.com/docs/sign-in-with-slack) system. Use this for Integration testing of systems that require Slack sign-in.
+A mock server that emulates the functions of the [Sign-in With Slack](https://api.slack.com/docs/sign-in-with-slack) system. Use this for Integration testing of systems that require Slack sign-in.
 
 See [the official Sign In With Slack](https://api.slack.com/docs/sign-in-with-slack) docs.
 
 ## Docker Image
 
-* [`davesag/mock-sign-in-with-slack`](https://hub.docker.com/r/davesag/mock-sign-in-with-slack/)
+- [`davesag/mock-sign-in-with-slack`](https://hub.docker.com/r/davesag/mock-sign-in-with-slack/)
 
 ## Configuration
 
@@ -37,20 +37,13 @@ This decodes to
   {
     "name": "Test User",
     "email": "test@test.tes",
-    "scopes": [
-      "identity.basic",
-      "identity.email"
-    ],
+    "scopes": ["identity.basic", "identity.email"],
     "code": "abcd-123"
   },
   {
     "name": "Test Admin",
     "email": "testadmin@test.tes",
-    "scopes": [
-      "identity.basic",
-      "identity.email",
-      "admin"
-    ],
+    "scopes": ["identity.basic", "identity.email", "admin"],
     "code": "abcd-666"
   }
 ]
@@ -82,8 +75,8 @@ Your website or app sends a `GET` request to the url
 
 Checks the `CLIENT_ID` and `scope` and that there is a `redirect_uri` (can have any value), then, if all is good, a mock login form is presented that requests
 
-* `name`
-* `email` (returned if the scope includes `identity.email`)
+- `name`
+- `email` (returned if the scope includes `identity.email`)
 
 This information is retained in memory only so don't rely on it between server restarts.
 
@@ -97,10 +90,10 @@ If you don't have a redirection handler ready yet just leave out `redirect_uri` 
 
 All that is being mocked here is the ability to sign-in with Slack, and not the full-slack API. The following scopes sre supported:
 
-* `identity.basic` — This is required.
-* `identity.email` — You'll want to send this too if you need a user's email address
+- `identity.basic` — This is required.
+- `identity.email` — You'll want to send this too if you need a user's email address
 
-All other scopes are ignored.  Send multiple scopes as comma-delimited values with the `scope` param. So:
+All other scopes are ignored. Send multiple scopes as comma-delimited values with the `scope` param. So:
 
 ```HTTP
 &scope=identity.basic,identity.email
@@ -150,7 +143,7 @@ You'll get back something like
 
 ### Get the User Details
 
-Once your server has retrieved the token it can then use that token to request additional user data.  Send a `GET` request to
+Once your server has retrieved the token it can then use that token to request additional user data. Send a `GET` request to
 
 ```HTTP
 /api/users.identity?token=xoxp-1111827393-16111519414-20367011469-5f89a31i07
@@ -208,7 +201,11 @@ Send a `POST` request to
 | Branch | Tests | Code Coverage | Audit | Comments |
 | ------ | ----- | ------------- | ----- | ---------|
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/develop) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/develop) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/master) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/master) | Latest Production Release |
+| `main` | [![CircleCI](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/main.svg?style=svg)](https://circleci.com/gh/davesag/mock-sign-in-with-slack/tree/main) | [![codecov](https://codecov.io/gh/davesag/mock-sign-in-with-slack/branch/main/graph/badge.svg)](https://codecov.io/gh/davesag/mock-sign-in-with-slack) | [![Vulnerabilities](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/main/badge.svg)](https://snyk.io/test/github/davesag/mock-sign-in-with-slack/main) | Latest Production Release |
+
+### Prerequisites
+
+- [NodeJS](https://nodejs.org), 12.13.0+ (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
 
 ### To build and run locally
 
@@ -225,12 +222,11 @@ You can put environment variables in a `.env` file.
 
 ### Testing
 
-* `npm test` to run the unit tests
-* `npm run test:server` will run the integration tests
-* `npm run lint` will lint it
-* `npm run prettier` will prettify it
-* `npm run test:unit:cov` will run the unit tests with code coverage
-* `npm run test:mutants` will run the mutation tests
+- `npm test` to run the unit tests
+- `npm run test:server` will run the integration tests
+- `npm run lint` will lint it
+- `npm run prettier` will prettify it
+- `npm run test:unit:cov` will run the unit tests with code coverage
 
 ## Contributing
 

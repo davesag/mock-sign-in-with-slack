@@ -1,11 +1,11 @@
-const faker = require('faker')
+const { faker } = require('@faker-js/faker')
 
 const fakeUser = (fields = {}) => {
   const firstName = fields.firstName || faker.name.firstName()
   const lastName = fields.lastName || faker.name.lastName()
   const name = fields.name || `${firstName} ${lastName}`
   const email = fields.email || faker.internet.exampleEmail(firstName, lastName)
-  const extraScopes = faker.random.arrayElement([null, 'identity.email', 'admin'])
+  const extraScopes = faker.helpers.arrayElement([null, 'identity.email', 'admin'])
   const scopes = fields.scopes
     ? fields.scopes
     : fields.extraScopes
@@ -13,7 +13,7 @@ const fakeUser = (fields = {}) => {
     : extraScopes
     ? ['identity.basic', ...extraScopes]
     : ['identity.basic']
-  const id = fields.id || faker.random.uuid()
+  const id = fields.id || faker.datatype.uuid()
   return {
     name,
     email,

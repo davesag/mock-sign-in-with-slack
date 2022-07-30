@@ -1,8 +1,8 @@
-const faker = require('faker')
+const { faker } = require('@faker-js/faker')
 
 const userData = (fields = {}) => ({
   email: faker.internet.email(),
-  token: faker.random.uuid(),
+  token: faker.datatype.uuid(),
   admin: faker.random.boolean(),
   ...fields
 })
