@@ -1,2 +1,3 @@
 coverage
 src/api/v1/auth/authenticate.js
+.vscode
