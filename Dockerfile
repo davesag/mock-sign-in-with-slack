@@ -5,7 +5,7 @@ EXPOSE 8282
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
 
-COPY --chown=node:node package.json package-lock.json index.js ./
+COPY --chown=node:node package.json index.js ./
 COPY --chown=node:node src/ ./src/
 
 ENV NODE_PATH .
@@ -14,6 +14,6 @@ ENV HUSKY_SKIP_INSTALL true
 
 USER node
 
-RUN npm install --production
+RUN npm install --omit=dev
 
 ENTRYPOINT ["node" , " index.js" ]
