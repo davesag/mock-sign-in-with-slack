@@ -53,7 +53,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
+    "@faker-js/faker": "^8.1.0",
     "ajv": "^8.12.0",
     "chai": "^4.3.8",
     "chai-almost": "^1.0.1",
