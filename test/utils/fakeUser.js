@@ -9,10 +9,10 @@ const fakeUser = (fields = {}) => {
   const scopes = fields.scopes
     ? fields.scopes
     : fields.extraScopes
-    ? ['identity.basic', ...fields.extraScopes]
-    : extraScopes
-    ? ['identity.basic', ...extraScopes]
-    : ['identity.basic']
+      ? ['identity.basic', ...fields.extraScopes]
+      : extraScopes
+        ? ['identity.basic', ...extraScopes]
+        : ['identity.basic']
   const id = fields.id || faker.datatype.uuid()
   return {
     name,
